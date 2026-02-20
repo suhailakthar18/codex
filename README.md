@@ -1,6 +1,6 @@
 # 4-Tier Mini E-Commerce App (Microservices)
 
-This project is now split into **microservices**:
+This project is split into **microservices**:
 - **Frontend service** (Nginx) for UI
 - **Backend service** (Python API/business logic)
 - **Database service** (PostgreSQL)
@@ -10,14 +10,7 @@ Features:
 - Users can view, like/save, and add products to cart
 - No payment flow yet
 
-## Architecture
-
-1. **Presentation tier**: `frontend/` (served by Nginx)
-2. **API tier**: `app/api/routes.py`
-3. **Business tier**: `app/services/`
-4. **Data tier**: PostgreSQL (`db` service in compose) with repository layer in `app/data/repository.py`
-
-## Run with Docker Compose
+## Quick start (Docker)
 
 ```bash
 docker compose up --build
@@ -30,9 +23,17 @@ Open:
 Default admin token: `admin123`.
 You can change it in `docker-compose.yml` (`backend.environment.ADMIN_TOKEN`).
 
-## Local test (without Docker)
+## Local backend run (without Docker)
 
-The automated tests run on SQLite mode for fast local validation:
+```bash
+python -m app.app
+```
+
+Then open `http://localhost:5000/`.
+
+> Note: If `DB_ENGINE=postgres` is set but Postgres/driver is unavailable, the app automatically falls back to SQLite so the server still starts locally.
+
+## Local test
 
 ```bash
 python -m pytest -q

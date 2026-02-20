@@ -248,5 +248,8 @@ class PostgresStoreRepository:
 def create_repository(db_path="data/store.db"):
     engine = os.environ.get("DB_ENGINE", "sqlite").lower()
     if engine == "postgres":
-        return PostgresStoreRepository()
+        try:
+            return PostgresStoreRepository()
+        except Exception:
+            return SQLiteStoreRepository(db_path)
     return SQLiteStoreRepository(db_path)
