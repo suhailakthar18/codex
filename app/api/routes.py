@@ -28,7 +28,7 @@ def handle_api_request(method: str, path: str, body: bytes, service, admin_servi
 
     if clean_path == "/api/admin/products" and method == "POST":
         if not is_admin(headers, admin_token):
-            return json_response(403, {"error": "Admin access required"})
+            return json_response(403, {"error": "Admin access required. Use admin token (default: admin123)"})
         try:
             product = admin_service.create_product(parse_json(body))
             return json_response(201, product)

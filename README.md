@@ -38,3 +38,7 @@ Then open `http://localhost:5000/`.
 ```bash
 python -m pytest -q
 ```
+
+
+If you get `Admin access required`, open the admin page and enter the token.
+Default is `admin123` unless you changed `ADMIN_TOKEN`.
